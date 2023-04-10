@@ -10,7 +10,7 @@ defineProps({
   <div class="status">
     <h1 class="orange">Putte: {{ msg }}</h1>
     <h3>
-      This would be the main status page!
+      This would be the main status page six! Apart from no.
     </h3>
   </div>
 </template>

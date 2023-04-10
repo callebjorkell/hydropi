@@ -5,10 +5,11 @@ TIME:=$(shell date -u -Iseconds)
 
 BIN:=hydropi
 PACKAGE:=./cmd/hydropi
+FRONTEND:=frontend
 
-.PHONY: dev cross-pi pi deps update-deps vet test-server fmt test
+.PHONY: dev pi deps update-deps vet fmt test run watch frontend
 
-dev: test vet deps fmt
+dev: test vet deps fmt frontend
 	go build -ldflags "-X main.buildVersion=$(VERSION) -X main.buildTime=$(TIME)" -o $(BIN) $(PACKAGE)
 
 test: deps vet
@@ -27,9 +28,15 @@ update-deps:
 deps:
 	go mod download
 
-pi: deps
+pi: deps frontend
 	# GOOS=linux GOARCH=arm GOARM=6
 	go build -o $(BIN) -tags=pi -ldflags "-X main.buildVersion=$(VERSION) -X main.buildTime=$(TIME)" $(PACKAGE)
 
 run:
 	go run $(PACKAGE) start
+
+watch:
+	cd $(FRONTEND); npm run watch
+
+frontend:
+	cd $(FRONTEND); npm run build

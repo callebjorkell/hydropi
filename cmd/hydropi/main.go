@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"github.com/callebjorkell/hydropi/internal/server"
 	log "github.com/sirupsen/logrus"
 	"os"
 	"os/signal"
@@ -26,7 +27,7 @@ func startServer() {
 
 	// TODO: server stuff here.
 
-	<-ctx.Done()
+	server.Start(ctx)
 	log.Info("Server gracefully shut down")
 }
 
