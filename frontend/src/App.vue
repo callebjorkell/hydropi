@@ -1,15 +1,14 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/Home.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/hydro">Hydro</RouterLink>
       </nav>
     </div>
   </header>
@@ -41,7 +40,6 @@ nav a.router-link-exact-active:hover {
 nav a {
   display: inline-block;
   padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
 }
 
 nav a:first-of-type {
