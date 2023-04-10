@@ -1,2 +1,9 @@
 /hydropi
-/.idea
+.idea
+
+.DS_Store
+node_modules
+frontend/dist
+
+npm-debug.log*
+pnpm-debug.log*
